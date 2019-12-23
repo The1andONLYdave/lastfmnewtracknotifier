@@ -30,6 +30,8 @@ Use common sense when deciding how many calls to make. For example, if you're ma
 fastlane
 
 
+https://square.github.io/okhttp/r8_proguard/
+
 https://github.com/square/moshi/blob/master/kotlin/reflect/src/main/resources/META-INF/proguard/moshi-kotlin.pro
 
 https://github.com/square/moshi/blob/master/moshi/src/main/resources/META-INF/proguard/moshi.pro
@@ -43,5 +45,6 @@ https://www.last.fm/api/intro
 https://www.last.fm/api/show/user.getRecentTracks
 
 https://github.com/fastlane/fastlane
+
 
 
