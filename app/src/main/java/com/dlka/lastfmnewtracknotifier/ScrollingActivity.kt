@@ -1,10 +1,11 @@
 package com.dlka.lastfmnewtracknotifier
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_scrolling.*
 
 class ScrollingActivity : AppCompatActivity() {
@@ -32,6 +33,11 @@ class ScrollingActivity : AppCompatActivity() {
 
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_debug -> {
+                val myIntent = Intent(this@ScrollingActivity, DebugActivity::class.java)
+                this@ScrollingActivity.startActivity(myIntent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

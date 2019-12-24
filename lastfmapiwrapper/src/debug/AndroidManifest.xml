@@ -2,7 +2,7 @@
 
     <application>
         <activity
-            android:name="com.dlka.lastfmapiwrapper.DebugActivity"
+            android:name="com.dlka.lastfmnewtracknotifier.DebugActivity"
             android:label="@string/title_activity_debug"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
