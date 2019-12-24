@@ -58,13 +58,19 @@ class DebugActivity : AppCompatActivity() {
                     .url("https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=the1andonlydave&format=json&api_key=&limit=200&page=54")
                     .build();
             val response : Response = client.newCall(request).execute()
-
+            val responseBody = response.body
 
             val moshi: Moshi = Moshi.Builder().build()
-            val adapter: JsonAdapter<Attr> = moshi.adapter(Attr::class.java)
-            val attr: Attr? = adapter.fromJson(response.body!!.string())
+            val adapter: JsonAdapter<API> = moshi.adapter(API::class.java)
+            //val attr: Attr? = adapter.fromJson(responseBodyString)
 
-            responseTVMoshi.text = "seiten:"+attr?.totalPages +"pro seite:"+ attr?.perPage + "gesamt:" + attr?.total
+
+            val api: API? = adapter.fromJson(responseBody?.string())
+
+
+            responseTVMoshi.text = api?.recenttracks?.attr?.total
+
+            //responseTVMoshi.text = "seiten:"+api?.attr?totalPages +"pro seite:"+ api?.attr?.perPage + "gesamt:" + attr?.total
 
 
         }
