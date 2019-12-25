@@ -62,15 +62,13 @@ class DebugActivity : AppCompatActivity() {
 
             val moshi: Moshi = Moshi.Builder().build()
             val adapter: JsonAdapter<API> = moshi.adapter(API::class.java)
-            //val attr: Attr? = adapter.fromJson(responseBodyString)
-
 
             val api: API? = adapter.fromJson(responseBody?.string())
 
 
             responseTVMoshi.text = api?.recenttracks?.attr?.total
 
-            //responseTVMoshi.text = "seiten:"+api?.attr?totalPages +"pro seite:"+ api?.attr?.perPage + "gesamt:" + attr?.total
+            responseTVMoshi.text = "seiten:"+api?.recenttracks?.attr?.totalPages +"pro seite:"+api?.recenttracks?.attr?.perPage+"gesamt:"+api?.recenttracks?.attr?.total
 
 
         }
@@ -83,13 +81,15 @@ class DebugActivity : AppCompatActivity() {
                 .url("https://ws.audioscrobbler.com/2.0/?method="+method+"&user="+user+"&format="+format+"&api_key="+apiKey+"&limit="+limit.toString()+"&page="+page.toString())
                 .build();
             val response : Response = client.newCall(request).execute()
-
+            val responseBody = response.body
 
             val moshi: Moshi = Moshi.Builder().build()
-            val adapter: JsonAdapter<Attr> = moshi.adapter(Attr::class.java)
-            val songs = adapter.fromJson(response.body!!.string()).toString()
+            val adapter: JsonAdapter<API> = moshi.adapter(API::class.java)
 
-            responseTVMoshi.text = songs
+            val api: API? = adapter.fromJson(responseBody?.string())
+
+
+            responseTVMoshi.text = "seiten:"+api?.recenttracks?.attr?.totalPages +"pro seite:"+api?.recenttracks?.attr?.perPage+"gesamt:"+api?.recenttracks?.attr?.total
         }
 
 
